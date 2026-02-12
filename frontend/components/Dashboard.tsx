@@ -79,17 +79,17 @@ export default function Dashboard() {
   const statuses = ["All", "Planned", "In Progress", "Complete"];
 
   return (
-    <div className="min-h-screen bg-[#1e1e1e] text-zinc-50 p-6">
+    <div className="min-h-screen bg-[#1e1e1e] text-[#cccccc] p-6">
       <div className="max-w-6xl mx-auto">
-        <header className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <header className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between bg-[#252526] p-4 rounded border border-[#454545]">
           <div>
-            <h1 className="text-2xl font-semibold">Garage Log</h1>
-            <p className="text-sm text-zinc-400">Build log & mod tracker</p>
+            <h1 className="text-2xl font-semibold text-white">Garage Log</h1>
+            <p className="text-sm text-[#858585]">Build log & mod tracker</p>
           </div>
 
           <div className="flex gap-3 items-center">
             <select
-              className="rounded-md border px-3 py-2 bg-white dark:bg-[#111]"
+              className="rounded border border-[#454545] px-3 py-2 bg-[#3c3c3c] text-[#cccccc] hover:bg-[#2a2d2e] focus:outline-none focus:border-[#007acc]"
               value={selectedCarId ?? -1}
               onChange={(e) => setSelectedCarId(Number(e.target.value) === -1 ? null : Number(e.target.value))}
             >
@@ -100,36 +100,36 @@ export default function Dashboard() {
               ))}
             </select>
 
-            <div className="bg-[#252526] rounded-md px-4 py-2">
-              <div className="text-xs text-zinc-400">Total spent</div>
-              <div className="font-semibold">${totals.totalSpent.toFixed(2)}</div>
+            <div className="bg-[#252526] border border-[#454545] rounded px-4 py-2">
+              <div className="text-xs text-[#858585]">Total spent</div>
+              <div className="font-semibold text-white">${totals.totalSpent.toFixed(2)}</div>
             </div>
 
-            <div className="bg-[#252526] rounded-md px-4 py-2">
-              <div className="text-xs text-zinc-400">Planned</div>
-              <div className="font-semibold">${totals.totalPlanned.toFixed(2)}</div>
+            <div className="bg-[#252526] border border-[#454545] rounded px-4 py-2">
+              <div className="text-xs text-[#858585]">Planned</div>
+              <div className="font-semibold text-white">${totals.totalPlanned.toFixed(2)}</div>
             </div>
 
-            <div className="bg-[#252526] rounded-md px-4 py-2">
-              <div className="text-xs text-zinc-400">Completed</div>
-              <div className="font-semibold">{totals.completedCount}</div>
+            <div className="bg-[#252526] border border-[#454545] rounded px-4 py-2">
+              <div className="text-xs text-[#858585]">Completed</div>
+              <div className="font-semibold text-white">{totals.completedCount}</div>
             </div>
           </div>
         </header>
 
         <section className="mb-6">
-          <div className="bg-[#252526] p-4 rounded-md">
-            <div className="mb-2 text-sm text-zinc-300">Build Progress</div>
-            <div className="w-full bg-[#2d2d2d] h-3 rounded-full overflow-hidden">
-              <div className="h-3 bg-emerald-500" style={{ width: `${percentComplete}%` }} />
+          <div className="bg-[#252526] border border-[#454545] p-4 rounded">
+            <div className="mb-2 text-sm text-[#cccccc]">Build Progress</div>
+            <div className="w-full bg-[#3c3c3c] h-3 rounded overflow-hidden">
+              <div className="h-3 bg-[#007acc]" style={{ width: `${percentComplete}%` }} />
             </div>
-            <div className="mt-2 text-xs text-zinc-400">{percentComplete}% complete</div>
+            <div className="mt-2 text-xs text-[#858585]">{percentComplete}% complete</div>
           </div>
         </section>
 
         <section className="mb-6 flex gap-3 items-center">
-          <label className="text-sm text-zinc-300">Status</label>
-          <select className="rounded-md border px-3 py-2 bg-[#252526] text-zinc-200" value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
+          <label className="text-sm text-[#cccccc]">Status</label>
+          <select className="rounded border border-[#454545] px-3 py-2 bg-[#3c3c3c] text-[#cccccc] hover:bg-[#2a2d2e] focus:outline-none focus:border-[#007acc]" value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
             {statuses.map((s) => (
               <option key={s} value={s}>
                 {s}
@@ -137,8 +137,8 @@ export default function Dashboard() {
             ))}
           </select>
 
-          <label className="text-sm">Category</label>
-          <select className="rounded-md border px-3 py-2 bg-[#252526] text-zinc-200" value={categoryFilter} onChange={(e) => setCategoryFilter(e.target.value)}>
+          <label className="text-sm text-[#cccccc]">Category</label>
+          <select className="rounded border border-[#454545] px-3 py-2 bg-[#3c3c3c] text-[#cccccc] hover:bg-[#2a2d2e] focus:outline-none focus:border-[#007acc]" value={categoryFilter} onChange={(e) => setCategoryFilter(e.target.value)}>
             {categories.map((c) => (
               <option key={c} value={c}>
                 {c}
@@ -148,9 +148,9 @@ export default function Dashboard() {
         </section>
 
         <section>
-          <div className="bg-[#1f1f1f] rounded-md overflow-hidden">
+          <div className="bg-[#252526] border border-[#454545] rounded overflow-hidden">
             <table className="w-full text-left">
-              <thead className="text-xs text-zinc-500 uppercase bg-zinc-100 dark:bg-[#0b0b0b]">
+              <thead className="text-xs text-[#858585] uppercase bg-[#1e1e1e] border-b border-[#454545]">
                 <tr>
                   <th className="px-4 py-3">Mod / Part</th>
                   <th className="px-4 py-3">Category</th>
@@ -162,16 +162,16 @@ export default function Dashboard() {
               </thead>
               <tbody>
                 {filtered.map((m) => (
-                  <tr key={m.id} className="border-t border-zinc-800">
+                  <tr key={m.id} className="border-b border-[#454545] hover:bg-[#2a2d2e]">
                     <td className="px-4 py-3">
-                      <div className="font-medium text-zinc-100">{m.name}</div>
-                      <div className="text-xs text-zinc-400">{m.car ? m.car.nickname ?? `${m.car.make} ${m.car.model}` : "—"}</div>
+                      <div className="font-medium text-white">{m.name}</div>
+                      <div className="text-xs text-[#858585]">{m.car ? m.car.nickname ?? `${m.car.make} ${m.car.model}` : "—"}</div>
                     </td>
-                    <td className="px-4 py-3 text-zinc-200">{m.category}</td>
-                    <td className="px-4 py-3 text-zinc-200">${(m.cost || 0).toFixed(2)}</td>
-                    <td className="px-4 py-3 text-zinc-200">{m.status}</td>
-                    <td className="px-4 py-3 text-sm text-zinc-400">{m.notes?.slice(0, 120)}</td>
-                    <td className="px-4 py-3 text-sm text-zinc-400">
+                    <td className="px-4 py-3 text-[#cccccc]">{m.category}</td>
+                    <td className="px-4 py-3 text-[#cccccc]">${(m.cost || 0).toFixed(2)}</td>
+                    <td className="px-4 py-3 text-[#cccccc]">{m.status}</td>
+                    <td className="px-4 py-3 text-sm text-[#858585]">{m.notes?.slice(0, 120)}</td>
+                    <td className="px-4 py-3 text-sm text-[#858585]">
                       <div>{new Date(m.createdDate).toLocaleDateString()}</div>
                       <div>{m.completedDate ? new Date(m.completedDate).toLocaleDateString() : "-"}</div>
                     </td>
@@ -179,7 +179,7 @@ export default function Dashboard() {
                 ))}
               </tbody>
             </table>
-            {filtered.length === 0 && <div className="p-6 text-center text-zinc-500">No mods match the filters</div>}
+            {filtered.length === 0 && <div className="p-6 text-center text-[#858585]">No mods match the filters</div>}
           </div>
         </section>
       </div>

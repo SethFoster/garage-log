@@ -1,0 +1,36 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "5084:5084"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5084
+      - DB_PATH=/app/data/garage-log.db
+    volumes:
+      - backend-data:/app/data
+    networks:
+      - garage-log-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:5084
+    depends_on:
+      - backend
+    networks:
+      - garage-log-network
+
+volumes:
+  backend-data:
+    driver: local
+
+networks:
+  garage-log-network:
+    driver: bridge

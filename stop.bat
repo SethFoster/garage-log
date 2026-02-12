@@ -1,0 +1,3 @@
+@echo off
+echo Stopping Garage Log...
+docker-compose down

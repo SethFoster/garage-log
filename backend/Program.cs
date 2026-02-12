@@ -5,8 +5,9 @@ using GarageLog.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // --- Setup SQLite with EF Core ---
+var dbPath = Environment.GetEnvironmentVariable("DB_PATH") ?? "garage-log.db";
 builder.Services.AddDbContext<GarageLogContext>(options =>
-    options.UseSqlite(@"Data Source=C:\Users\iowah\SourceCode\garage-log\backend\garage-log.db"));
+    options.UseSqlite($"Data Source={dbPath}"));
 
 // register services
 builder.Services.AddScoped<ModService>();
@@ -15,7 +16,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowLocal", policy =>
     {
-        policy.WithOrigins("http://localhost:3000", "http://localhost:3001")
+        policy.WithOrigins("http://localhost:3000", "http://localhost:3001", "http://frontend:3000")
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();

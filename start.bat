@@ -1,0 +1,3 @@
+@echo off
+echo Starting Garage Log with Docker...
+docker-compose up --build
